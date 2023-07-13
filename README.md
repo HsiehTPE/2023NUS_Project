@@ -1,1 +1,1 @@
-# 2023NUSsummer_2DGamesDevelpoement
+# 2023_Summer_NUS 2D Games Develpoement Project
