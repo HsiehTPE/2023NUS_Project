@@ -6,3 +6,5 @@ visit WebGL file folder with the format https://hsiehtpe.github.io/2023NUS_Proje
 examples: https://hsiehtpe.github.io/2023NUS_Project/test
 
 rough demo: https://hsiehtpe.github.io/2023NUS_Project/3_RoughDemo/DemoWebGL
+
+alpha test: 
