@@ -14,15 +14,15 @@ public class GameManager : MonoBehaviour
     {
         Debug.Assert(angoscript!=null);
         Debug.Assert(ango_obj!=null);
-        Debug.Assert(numkey!=null);
+        //angoscript.get_torch=true;
+        //Debug.Assert(numkey!=null);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Q))
-            Application.Quit();
-        // numkey.text = "Number of Keys : "+numKey.ToString();
+        /*if(Input.GetKey(KeyCode.Q))
+            Application.Quit();*/
         numkey.text = numKey.ToString();
     }
 }

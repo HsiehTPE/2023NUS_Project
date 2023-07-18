@@ -6,60 +6,65 @@ public class Pause : MonoBehaviour
 {
     public GameObject PauseMenu = null;
     private bool pauseflag = false;
-
+    private bool cooldown = false;
+    private int init_cooldown = 100;
+    private int cooling_time = 100;
     // Start is called before the first frame update
     void Start()
     {
+        // cooling_time = init_cooldown;
+        PauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        check_cooldown();
+        enablePause();
+        unablePause();   
+    }
+
+    void enablePause()
+    {
+        if(Input.GetKey(KeyCode.P) && !pauseflag)
         {
-            if (!pauseflag)
-            {
-                print("p2"+pauseflag);
-                // PauseGame();
-                PauseMenu.SetActive(true);
-                Time.timeScale = 0f;
-                pauseflag = true;
-                print("p2"+pauseflag);
-            }
-            else
-            {
-                print("p1"+pauseflag);
-                // ResumeGame();
-                Time.timeScale = 1f;
-                pauseflag = false;
-                PauseMenu.SetActive(false);
-                print("p1"+pauseflag);
-            }
+            PauseMenu.SetActive(true);
+            pauseflag = true;
+            Time.timeScale = 0f; 
+            cooldown = true;
+            print("a");
         }
-
     }
 
-
-    public void PauseGame()
+    void unablePause()
     {
-        PauseMenu.SetActive(true);
-        Time.timeScale = 0f;
-        pauseflag = true;
+        if(Input.GetKey(KeyCode.P) && pauseflag && !cooldown)
+        {
+            PauseMenu.SetActive(false);
+            pauseflag = false;
+            Time.timeScale = 1f;
+            print("b");
+        }
     }
- 
-    public void ResumeGame()
+
+    void check_cooldown()
     {
-        Time.timeScale = 1f;
-        pauseflag = false;
-        PauseMenu.SetActive(false);
+        if(cooldown)
+        {
+            cooling_time --;
+        }
+        if(cooling_time <= 0)
+        {
+            cooldown = false;
+            cooling_time = init_cooldown;
+            print("cooltime"+cooling_time);
+        }
     }
 
     public void click_unpause()
     {
-        print("p3"+pauseflag);
         PauseMenu.SetActive(false);
         pauseflag = false;
         Time.timeScale = 1f;
-        print("p3"+pauseflag);
     }
 }

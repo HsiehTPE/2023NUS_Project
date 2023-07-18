@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class platform_up : MonoBehaviour
 {
+    private float posx,posy,posz;
+
     public button butt;
     private bool flag;
     private bool lever_state;
     private float Elevatorspeed;
-    private float X_min,X_max;
+    public float X_min=40f,X_max=46f;
     void Start()
     {
+        posx=transform.position.x;
+        posy=transform.position.y;
+        posz=transform.position.z;
         flag = true;
         Elevatorspeed = 2f;
-        X_min = 0f;
-        X_max = 20f;
+        
     }
 
     // Update is called once per frame
@@ -35,10 +39,13 @@ public class platform_up : MonoBehaviour
     }
 
     private void go_up(){
-        transform.position += new Vector3(0f,Elevatorspeed * Time.deltaTime,0f);
+        //transform.position += new Vector3(0f,Elevatorspeed * Time.deltaTime,0f);
+        transform.position = Vector3.MoveTowards(transform.position,new Vector3(posx,X_max,posz),Elevatorspeed*Time.smoothDeltaTime);
     }
 
     private void go_down(){
-        transform.position -= new Vector3(0f,Elevatorspeed * Time.deltaTime,0f);
+        //transform.position -= new Vector3(0f,Elevatorspeed * Time.deltaTime,0f);
+        transform.position = Vector3.MoveTowards(transform.position,new Vector3(posx,X_min,posz),Elevatorspeed*Time.smoothDeltaTime);
+
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Main_Charactor : MonoBehaviour
+public class Main_Charactor : MonoBehaviour,IDataPersistence
 {
     private Vector3 up=new Vector3(0,1f,0);
     public GameManager gm;
@@ -15,14 +15,27 @@ public class Main_Charactor : MonoBehaviour
     public GameObject attackCollider;
     private bool hasTorch;
     public AudioClip[] myAudioClip;
-
-    public bool get_torch = false;
-    
     AudioSource myAudio;
+    public int GetCoins = 0;
+    public bool get_torch = false;
     // Start is called before the first frame update
 
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPosition;
+        this.GetCoins = data.GetCoins;
+        this.gm.numKey = data.keys;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerPosition = this.transform.position;
+        data.GetCoins = this.GetCoins;
+        data.keys = this.gm.numKey;
+    }
+
     private void Awake(){
-        mySpeed = 5f;
+        mySpeed = 7f;
         myAnime = GetComponent<Animator>();
         myRigi = GetComponent<Rigidbody2D>();
         jumpForce = 16;
@@ -78,6 +91,10 @@ public class Main_Charactor : MonoBehaviour
     }
     // Update is called once per frame
     private void Update(){
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            transform.position=new Vector3(35f,39f,0f);
+        }
         transform.up=up;
 
         if(Input.GetKeyDown(KeyCode.Space) && canJump)
@@ -121,4 +138,16 @@ public class Main_Charactor : MonoBehaviour
 
     public bool equip_torch() {return hasTorch;}
     public bool equip_sword() {return isSword;}
+
+    private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.tag == "Coin"){
+            GetCoins++;
+            Destroy(collision.gameObject);
+        }
+    }
+
+    // private void OnGUI(){
+    //     GUI.skin.label.fontSize = 50;
+    //     GUI.Label(new Rect(20,20,500,500),"Coin num: " + GetCoins);
+    // }
 }

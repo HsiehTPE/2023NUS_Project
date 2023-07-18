@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class door_key : MonoBehaviour
+public class door_key : MonoBehaviour,IDataPersistence
 {
     public GameObject ango_obj=null;
     public Main_Charactor ango=null;
     private float posx,posy,posz;
-    private float y_max;
+    public float y_max;
     private float tmpy;
     private float delta=5f;
     private float hello=3f;
@@ -15,6 +15,32 @@ public class door_key : MonoBehaviour
     private Vector3 up=new Vector3(0f, 1f, 0f);
     private AudioSource myAudio;
     // Start is called before the first frame update
+
+    [SerializeField] private string id;
+    
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
+    public void LoadData(GameData data)
+    {
+        if(data.doorPos.ContainsKey(id))
+        {
+            transform.position = data.doorPos[id];
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if(data.doorPos.ContainsKey(id))
+        {
+            data.doorPos.Remove(id);
+        }
+        data.doorPos.Add(id,transform.position);
+    }
+
     void Start()
     {
         Debug.Assert(ango!=null);
@@ -23,10 +49,11 @@ public class door_key : MonoBehaviour
         posy=transform.localPosition.y;
         posz=transform.localPosition.z;
         tmpy=posy+delta;
-        y_max = 2.72f;
         myAudio = GetComponent<AudioSource>();
         willup = false;
     }
+
+    
 
     // Update is called once per frame
     void Update()
