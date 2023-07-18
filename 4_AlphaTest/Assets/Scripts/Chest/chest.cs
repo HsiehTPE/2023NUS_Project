@@ -20,7 +20,7 @@ public class chest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float dist = Vector3.Distance(hero.transform.localPosition, transform.localPosition);
+        float dist = Vector3.Distance(hero.transform.position, transform.position);
         if(dist<delta){
             UI=true;
             if(Input.GetKey(KeyCode.E))
@@ -36,7 +36,7 @@ public class chest : MonoBehaviour
         ango.gm.numKey++;
         template = Resources.Load<GameObject>("Prefabs/emptychest");
         GameObject p = GameObject.Instantiate(template) as GameObject;
-        p.transform.localPosition=transform.localPosition;
+        p.transform.position=transform.position;
         Destroy(gameObject);
     }
 }

@@ -15,6 +15,6 @@ public class Pick_Up : MonoBehaviour
 
     private void OnGUI(){
         GUI.skin.label.fontSize = 50;
-        // GUI.Label(new Rect(20,20,500,500),"Coin num: " + GetCoins);
+        GUI.Label(new Rect(20,20,500,500),"Coin num: " + GetCoins);
     }
 }

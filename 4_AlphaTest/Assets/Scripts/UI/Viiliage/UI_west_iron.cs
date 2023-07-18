@@ -8,6 +8,7 @@ public class UI_west_iron : MonoBehaviour
     // public GameObject trigger_object;
     public GameObject trigger_hint;
     public GameObject dialog;
+    // private GameObject T = null;
     private bool hint = false; 
 
     // Start is called before the first frame update
@@ -25,6 +26,8 @@ public class UI_west_iron : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 dialog.SetActive(true);
+                // 1
+                // Time.timeScale = 0f;
             }
         }
         else

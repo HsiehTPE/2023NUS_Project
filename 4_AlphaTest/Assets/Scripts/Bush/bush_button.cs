@@ -87,4 +87,6 @@ public class bush_button : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 }

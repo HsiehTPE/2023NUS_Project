@@ -35,7 +35,7 @@ public class Bush : MonoBehaviour
     void fire_attribute()
     {
         // measuring the distance between Ango and the onject
-        float dis = Vector3.Distance(hero.transform.localPosition, transform.localPosition);
+        float dis = Vector3.Distance(hero.transform.position, transform.position);
         if(dis<=delta)
         {
             if(Input.GetKeyDown(KeyCode.E))
@@ -43,7 +43,7 @@ public class Bush : MonoBehaviour
                 if(!onFire)
                 {
                     GameObject f2 = GameObject.Instantiate(mFireTemplate) as GameObject;
-                    f2.transform.localPosition = transform.localPosition + new Vector3(-1f, 0f, -1f);
+                    f2.transform.position = transform.position + new Vector3(-1f, 0f, -1f);
                 }
                 onFire = true; 
             }
@@ -57,7 +57,7 @@ public class Bush : MonoBehaviour
             if(mLifeCount<=200 && ! extend)
             {
                 GameObject f1 = GameObject.Instantiate(mFireTemplate) as GameObject;
-                f1.transform.localPosition = transform.localPosition + new Vector3(1f, 0f, -1f);
+                f1.transform.position = transform.position + new Vector3(1f, 0f, -1f);
                 extend = true;
             }
             SpriteRenderer s = GetComponent<SpriteRenderer>();
@@ -76,7 +76,7 @@ public class Bush : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "Weapon" )
         {
-            AudioSource.PlayClipAtPoint(myAudio.clip,transform.localPosition,1f);
+            AudioSource.PlayClipAtPoint(myAudio.clip,transform.position,1f);
             Destroy(gameObject);
         }
     }
