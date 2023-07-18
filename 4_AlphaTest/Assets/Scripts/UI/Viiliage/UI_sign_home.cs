@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro; 
 
-public class UI_west_iron : MonoBehaviour
+public class UI_sign_home : MonoBehaviour
 {
     // public GameObject trigger_object;
     public GameObject trigger_hint;
