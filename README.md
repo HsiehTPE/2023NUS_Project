@@ -8,3 +8,6 @@ examples: https://hsiehtpe.github.io/2023NUS_Project/test
 rough demo: https://hsiehtpe.github.io/2023NUS_Project/3_RoughDemo/DemoWebGL
 
 alpha test: https://hsiehtpe.github.io/2023NUS_Project/4_AlphaTest/AlphaTest_WebGL
+
+beta test: https://hsiehtpe.github.io/2023NUS_Project/5_BetaTest/beta_test_webgl
+
