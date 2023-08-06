@@ -42,7 +42,7 @@ public class bush_trap : MonoBehaviour
         float dis = Vector3.Distance(hero.transform.localPosition, transform.localPosition);
         if(dis<=delta)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.J))
             {
                 if(!onFire)
                 {

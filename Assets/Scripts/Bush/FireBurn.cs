@@ -7,11 +7,14 @@ public class FireBurn : MonoBehaviour
 {
     private GameObject mSmokeTemplate = null;
     private const int kLifeTime = 1600; // Alife for this number of cycles
-    private int mLifeCount = 0; 
+    private int mLifeCount = 0;
+    private float mtriggered = 0f;
+    private float  mTime = 3f;
     // Start is called before the first frame update
     void Start()
     {
         mLifeCount = kLifeTime;
+        mtriggered = Time.time; 
         mSmokeTemplate = Resources.Load<GameObject>("Prefabs/BurningSmoke");
         GameObject s = GameObject.Instantiate(mSmokeTemplate) as GameObject;
         s.transform.localPosition = transform.localPosition;
@@ -22,7 +25,7 @@ public class FireBurn : MonoBehaviour
     void Update()
     {
         mLifeCount --;
-        if(mLifeCount<=0)
+        if(Time.time - mtriggered>=mTime)
             Destroy(transform.gameObject);  // kills self
     }
 }

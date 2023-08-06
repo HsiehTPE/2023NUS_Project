@@ -5,14 +5,15 @@ using UnityEngine;
 public class door : MonoBehaviour,IDataPersistence
 {
     private float MySpeed=3f;
-
+    private AudioSource myAudio;
+    private int num=0;
     public GameManager gm;
     public GameObject ango_obj=null;
     public button thebutton;
     public Main_Charactor ango=null;
     private float posx,posy,posz;
     private float tmpy;
-    private float delta=5f;
+    private float delta=3f;
     private float hello=3f;
     private Vector3 up=new Vector3(0f, 1f, 0f);
     // Start is called before the first frame update
@@ -58,6 +59,8 @@ public class door : MonoBehaviour,IDataPersistence
         posz=transform.localPosition.z;
         tmpy=posy+delta;
         ango=ango_obj.GetComponent<Main_Charactor>();
+        myAudio = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -66,6 +69,9 @@ public class door : MonoBehaviour,IDataPersistence
         //Debug.Log(ango.gm.numKey);
         bool trigger=thebutton.Triggered();
         if(trigger){
+            num++;
+            if(num==1)
+                myAudio.PlayOneShot(myAudio.clip);
             transform.localPosition = Vector3.MoveTowards(transform.localPosition,new Vector3(posx,tmpy,posz),MySpeed*Time.smoothDeltaTime);
         }
         else{

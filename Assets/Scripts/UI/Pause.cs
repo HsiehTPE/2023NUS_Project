@@ -19,24 +19,23 @@ public class Pause : MonoBehaviour
         {
             if (!pauseflag)
             {
-                print("p2"+pauseflag);
+                // print("p2"+pauseflag);
                 // PauseGame();
                 PauseMenu.SetActive(true);
                 Time.timeScale = 0f;
                 pauseflag = true;
-                print("p2"+pauseflag);
+                // print("p2"+pauseflag);
             }
             else
             {
-                print("p1"+pauseflag);
+                // print("p1"+pauseflag);
                 // ResumeGame();
                 Time.timeScale = 1f;
                 pauseflag = false;
                 PauseMenu.SetActive(false);
-                print("p1"+pauseflag);
+                // print("p1"+pauseflag);
             }
         }
-
     }
 
 

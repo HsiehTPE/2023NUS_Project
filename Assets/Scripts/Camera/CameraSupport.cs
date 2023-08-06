@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraSupport : MonoBehaviour
 {
     public GameObject ango=null;
-    private Vector3 minus=new Vector3(0f,4f,-10f);
+    public Vector3 minus=new Vector3(0f,4f,-10f);
     // Start is called before the first frame update
     void Start()
     {

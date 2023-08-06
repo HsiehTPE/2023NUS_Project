@@ -8,6 +8,7 @@ public class Bag : MonoBehaviour
     public GameObject BagMenu = null;
     public Main_Charactor ango = null;
     public GameObject torch_button = null;
+    public GameObject shrink_button = null;
     private bool bagflag = false;
     public string currentSelectItem;
 
@@ -48,6 +49,9 @@ public class Bag : MonoBehaviour
                 case "torch_button":
                     ango.bag_torch();
                     break;
+                case "shrink_button":
+                    ango.bag_shrink();
+                    break;
                 default: break;
             }
             print("p1"+bagflag);
@@ -60,6 +64,10 @@ public class Bag : MonoBehaviour
         if(ango.get_torch)
         {
             torch_button.SetActive(true);
+        }
+        if(ango.get_shrink)
+        {
+            shrink_button.SetActive(true);
         }
     }
 

@@ -1,3 +1,4 @@
+// using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,10 @@ public class HeroButtonCollider : MonoBehaviour
     {
         HeroScript = GetComponentInParent<Main_Charactor>();
         num = 0;
+    }
+
+    void Update(){
+        // Debug.Log(HeroScript.canJump);
     }
 
     private void OnTriggerEnter2D(Collider2D collision){

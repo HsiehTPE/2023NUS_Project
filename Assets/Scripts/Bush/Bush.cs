@@ -38,7 +38,7 @@ public class Bush : MonoBehaviour
         float dis = Vector3.Distance(hero.transform.position, transform.position);
         if(dis<=delta)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.J))
             {
                 if(!onFire)
                 {

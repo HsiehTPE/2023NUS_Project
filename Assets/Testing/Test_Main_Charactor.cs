@@ -54,8 +54,7 @@ public class Test_Main_Charactor : MonoBehaviour,IDataPersistence
         firstsize = transform.localScale;
     }
 
-    // replace by hsieh bagsystem
-    
+    // replaced by hsieh bagsystem
     // private void TorchCheck(){
     //     if(get_torch)
     //     {
@@ -105,7 +104,7 @@ public class Test_Main_Charactor : MonoBehaviour,IDataPersistence
     //         }
     //     }
     // }
-
+    
     // Add by hsieh for bag system
     public void bag_null()
     {
@@ -130,7 +129,7 @@ public class Test_Main_Charactor : MonoBehaviour,IDataPersistence
         hasTorch = true;
         myAnime.SetBool("Torch",true);
     }
-    //
+    // End for the bag system
 
     private void AttackSound()
     {
@@ -151,10 +150,6 @@ public class Test_Main_Charactor : MonoBehaviour,IDataPersistence
     }
     // Update is called once per frame
     private void Update(){
-        // if(Input.GetKeyDown(KeyCode.Escape))
-        // {
-        //     transform.position=new Vector3(35f,39f,0f);
-        // }
         transform.up=up;
 
         if(Input.GetKeyDown(KeyCode.Space) && canJump)
@@ -208,10 +203,6 @@ public class Test_Main_Charactor : MonoBehaviour,IDataPersistence
         }
     }
 
-    // private void OnGUI(){
-    //     GUI.skin.label.fontSize = 50;
-    //     GUI.Label(new Rect(20,20,500,500),"Coin num: " + GetCoins);
-    // }
     private void turnsmall()
     {
          if(Input.GetKeyDown(KeyCode.U))
@@ -260,5 +251,11 @@ public class Test_Main_Charactor : MonoBehaviour,IDataPersistence
             other.gameObject.GetComponent<Rigidbody2D>().mass = 5f;
         }
     }
+
+
+    // private void OnGUI(){
+    //     GUI.skin.label.fontSize = 50;
+    //     GUI.Label(new Rect(20,20,500,500),"Coin num: " + GetCoins);
+    // }
 }
 

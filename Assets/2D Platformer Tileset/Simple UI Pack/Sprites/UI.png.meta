@@ -515,6 +515,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -3413,13 +3425,13 @@ TextureImporter:
       UI_115: 4065986597469057987
       UI_49: -5435382621212259808
       UI_109: -6965092345105754706
-      UI_59: 492174521377706177
       UI_63: -8042598465018128641
-      UI_36: 6546827368892410583
       UI_112: -3917851163333800010
+      UI_36: 6546827368892410583
+      UI_117: -6567953364329243072
       UI_11: 9094600903545770030
       UI_38: 1001184207971911622
-      UI_117: -6567953364329243072
+      UI_59: 492174521377706177
       UI_60: -6857505874731288664
       UI_66: -4207310678073916395
       UI_71: 8570976138778877723
@@ -3461,9 +3473,9 @@ TextureImporter:
       UI_104: 4907177627651087451
       UI_128: -7288084716962332074
       UI_39: 568254257420953003
-      UI_25: -7543061489181569089
-      UI_27: -7867266084347359734
       UI_120: -4648647042806328552
+      UI_27: -7867266084347359734
+      UI_25: -7543061489181569089
       UI_21: -256003546741158619
       UI_3: -9136572144232859775
       UI_98: 3959234278617820587

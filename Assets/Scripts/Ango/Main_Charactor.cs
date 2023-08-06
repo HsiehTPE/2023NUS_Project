@@ -1,24 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Main_Charactor : MonoBehaviour,IDataPersistence
 {
+    float v=0.01f;
+    public GameObject light;
+    public GameObject main_camera;
     private Vector3 up=new Vector3(0,1f,0);
     public GameManager gm;
     public float mySpeed;
     public Animator myAnime;
     Rigidbody2D myRigi;
-    public bool jump,canJump,isSword;
+    public bool jump,canJump;
     public int Attack;
     private int jumpForce;
     public GameObject attackCollider;
-    private bool hasTorch;
+    public bool isSword;  // if ango is holding the sword
+    public bool hasTorch;  // if ango is holding the torch
+    private bool hasShrink;  // if ango is shrinking
     public AudioClip[] myAudioClip;
     AudioSource myAudio;
     public int GetCoins = 0;
-    public bool get_torch = false;
+    public bool get_torch = false; // if ango get the torch
+    public bool get_shrink = false;  // if ango get the shrink
     private int num=0;
+
+    // update from chx for shrinking function
+    public float scalesize;
+    private bool issmall;
+    Vector3 firstsize;
+    float y,sumtime;
+
+
     // Start is called before the first frame update
 
     public void LoadData(GameData data)
@@ -43,10 +58,16 @@ public class Main_Charactor : MonoBehaviour,IDataPersistence
         Attack = 0;
         isSword = false;
         hasTorch = false;
+        hasShrink = false;
+        issmall = true; // chx setting  no change
         myAudio = GetComponent<AudioSource>();
+        scalesize = 1f;
+        y = sumtime = 0f;
+        firstsize = transform.localScale;
     }
 
-    // replace by hsieh bagsystem
+/*
+    // replaced by hsieh bagsystem
     
     // private void TorchCheck(){
     //     if(get_torch)
@@ -97,18 +118,21 @@ public class Main_Charactor : MonoBehaviour,IDataPersistence
     //         }
     //     }
     // }
+*/
 
     // Add by hsieh for bag system
     public void bag_null()
     {
         hasTorch = false;
         isSword = false;
+        hasShrink = false;
         myAnime.SetBool("Torch",false);
         myAnime.SetBool("isSword",false);
     }
 
     public void bag_sword()
     {
+        hasShrink = false;
         hasTorch = false;
         myAnime.SetBool("Torch",false);
         isSword = true;
@@ -117,12 +141,23 @@ public class Main_Charactor : MonoBehaviour,IDataPersistence
 
     public void bag_torch()
     {
+        hasShrink = false;
         isSword = false;
         myAnime.SetBool("isSword",false);
         hasTorch = true;
         myAnime.SetBool("Torch",true);
     }
-    //
+
+    public void bag_shrink()
+    {
+        isSword = false;
+        hasTorch = false;
+        myAnime.SetBool("isSword",false);
+        myAnime.SetBool("Torch",false);
+        hasShrink = true;
+        // print("shrink"+hasShrink);
+    }
+    // End for the bag system
 
     private void AttackSound()
     {
@@ -147,6 +182,14 @@ public class Main_Charactor : MonoBehaviour,IDataPersistence
         // {
         //     transform.position=new Vector3(35f,39f,0f);
         // }
+        if(hasTorch)
+        {
+            light.SetActive(true);
+        }
+        else
+        {
+            light.SetActive(false);
+        }
         transform.up=up;
 
         if(Input.GetKeyDown(KeyCode.Space) && canJump)
@@ -155,6 +198,7 @@ public class Main_Charactor : MonoBehaviour,IDataPersistence
             jump = true;
         }
         AttackCheck();
+        turnsmall();
         //TorchCheck();
         //SwordCheck();
         //switch_weapon();
@@ -167,8 +211,8 @@ public class Main_Charactor : MonoBehaviour,IDataPersistence
         {
             myAudio.PlayOneShot(myAudioClip[0]);
         }
-        if(a>0) transform.localScale = new Vector3(1f,1f,1f);
-        else if(a<0) transform.localScale = new Vector3(-1f,1f,1f);
+        if(a>0) transform.localScale = new Vector3(scalesize,scalesize,scalesize);
+        else if(a<0) transform.localScale = new Vector3(-1f*scalesize,scalesize,scalesize);
 
         myAnime.SetFloat("Run",Mathf.Abs(a));
 
@@ -191,6 +235,7 @@ public class Main_Charactor : MonoBehaviour,IDataPersistence
 
     public bool equip_torch() {return hasTorch;}
     public bool equip_sword() {return isSword;}
+    public bool equip_shrink() {return hasShrink;}
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "Coin"){
@@ -199,6 +244,63 @@ public class Main_Charactor : MonoBehaviour,IDataPersistence
         }
     }
 
+    private void turnsmall()
+    {
+        if(hasShrink)
+        {
+            
+            if(Input.GetKeyDown(KeyCode.J))
+            {
+                issmall = !issmall;
+                if(!issmall && sumtime < 1f)
+                {
+                    main_camera.GetComponent<Camera>().orthographicSize=Mathf.SmoothDamp(5f,10f,ref v,100000f);
+                    main_camera.GetComponent<CameraSupport>().minus=new Vector3(0f,2f,-10f);
+                    sumtime += 0.02f;
+                    y = 0.5f*sumtime*sumtime + 0.5f;
+                    scalesize = y;
+                    transform.localScale = y*firstsize;
+                    if(y >= 1f)
+                    {
+                        sumtime = 1f;
+                        transform.localScale = new Vector3 (1f,1f,1f);
+                    }
+                }
+                if(issmall && sumtime > 0f)
+                {
+                    main_camera.GetComponent<Camera>().orthographicSize=Mathf.SmoothDamp(10f,5f,ref v,100000f);
+                    main_camera.GetComponent<CameraSupport>().minus=new Vector3(0f,4f,-10f);
+                    sumtime -= 0.02f;
+                    y = -0.5f*sumtime*sumtime + 1f;
+                    scalesize = y;
+                    transform.localScale = y*firstsize;
+                    if(y <= 0.5f)
+                    {
+                        sumtime = 1f;
+                        transform.localScale = new Vector3 (0.5f,0.5f,0.5f);
+                    }
+                }
+            }
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(!issmall && other.gameObject.tag == "box")
+        {
+            other.gameObject.GetComponent<Rigidbody2D>().mass = 10000f;
+        }
+        if(issmall && other.gameObject.tag == "box")
+        {
+            other.gameObject.GetComponent<Rigidbody2D>().mass = 5f;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other) {
+        if(other.gameObject.tag == "box")
+        {
+            other.gameObject.GetComponent<Rigidbody2D>().mass = 5f;
+        }
+    }
     // private void OnGUI(){
     //     GUI.skin.label.fontSize = 50;
     //     GUI.Label(new Rect(20,20,500,500),"Coin num: " + GetCoins);

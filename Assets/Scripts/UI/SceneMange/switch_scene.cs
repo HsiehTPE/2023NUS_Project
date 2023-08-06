@@ -8,15 +8,18 @@ public class switch_scene : MonoBehaviour
 {
     // public opening_transition o;
     // Start is called before the first frame update
+    public GameObject ango;
     public Animator transitionAnim;
-    public string sceneName;
+    public string scene_village;
     public string scene_main;
-    // public string scene_level_one;
     public string scene_snow;
+    public string scene_opening;
+    public string scene_cave;
+    public string scene_castle;
 
     void Start()
     {
- 
+
     }
  
     // Update is called once per frame
@@ -24,10 +27,14 @@ public class switch_scene : MonoBehaviour
     {
  
     }
-
-    public void startload()
+    public void startopen()
     {
-        StartCoroutine(LoadScene());
+        StartCoroutine(LoadOpen());
+    }
+
+    public void startvillage()
+    {
+        StartCoroutine(LoadVillage());
     }
 
     public void startmain()
@@ -42,11 +49,45 @@ public class switch_scene : MonoBehaviour
         StartCoroutine(LoadSnow());
     }
 
-    IEnumerator LoadScene()
+    public void startcave()
+    {
+        // Time.timeScale = 1f; 
+        StartCoroutine(LoadCave());
+    }
+
+    public void startcastle()
+    {
+        // Time.timeScale = 1f; 
+        StartCoroutine(LoadCastle());
+    }
+
+    public void open_start()
+    {
+        StartCoroutine(open_LoadVillage());
+    }
+
+
+    // Loading
+    IEnumerator LoadOpen()
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(scene_opening);
+    }
+
+
+    IEnumerator open_LoadVillage()
+    {
+        transitionAnim.Play("open_end");
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(scene_village);
+    } 
+
+    IEnumerator LoadVillage()
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(scene_village);
     }
 
     IEnumerator LoadMain()
@@ -63,6 +104,19 @@ public class switch_scene : MonoBehaviour
         SceneManager.LoadScene(scene_snow);       
     }
 
+    IEnumerator LoadCave()
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(scene_cave);       
+    }
+
+    IEnumerator LoadCastle()
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(scene_castle);       
+    }
 
     public void change_scene_main()
     {
@@ -77,6 +131,11 @@ public class switch_scene : MonoBehaviour
     public void change_to_levelone()
     {
         SceneManager.LoadScene("level_one");
+    }
+
+    public void change_to_leveltwo()
+    {
+        SceneManager.LoadScene("level_two");
     }
 
     public void quit_game()

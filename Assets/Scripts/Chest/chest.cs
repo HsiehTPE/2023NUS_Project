@@ -7,6 +7,7 @@ public class chest : MonoBehaviour
     public Main_Charactor ango=null;
     public GameObject hero=null;
     public GameObject template=null;
+    public GameObject dialog;
     private float delta=3f;
     private float colorminus=0.7f;
     public bool UI=false;
@@ -17,16 +18,19 @@ public class chest : MonoBehaviour
         Debug.Assert(hero!=null);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float dist = Vector3.Distance(hero.transform.position, transform.position);
+        float dist = Vector3.Distance(hero.transform.localPosition, transform.localPosition);
         if(dist<delta){
             UI=true;
             if(Input.GetKey(KeyCode.E))
             {
                 UI=false;
                 GenerateEmpytChest();
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    dialog.SetActive(true);
+                }
             }
         }
     }

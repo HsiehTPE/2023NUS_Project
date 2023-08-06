@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 4560680307196247480}
   - component: {fileID: 4560680307196247481}
   - component: {fileID: 4560680307196247426}
+  - component: {fileID: 1254450226945023118}
   - component: {fileID: 4560680307196247427}
   - component: {fileID: 4560680307196247429}
   - component: {fileID: 4560680307196247430}
@@ -231,7 +232,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4560680307196247482}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 2aed0c64f234c754fae9120bda4b8c3f, type: 2}
   m_IsTrigger: 0
@@ -250,6 +251,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1090808, y: 1.5129267}
   m_EdgeRadius: 0
+--- !u!70 &1254450226945023118
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560680307196247482}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.027395725, y: 0.16905713}
+  m_Size: {x: 1.1005869, y: 1.456964}
+  m_Direction: 0
 --- !u!50 &4560680307196247427
 Rigidbody2D:
   serializedVersion: 4
@@ -303,9 +320,14 @@ MonoBehaviour:
   myAnime: {fileID: 0}
   jump: 0
   canJump: 0
-  isSword: 0
   Attack: 0
   attackCollider: {fileID: 4560680305926333477}
+  isSword: 0
+  myAudioClip: []
+  GetCoins: 0
+  get_torch: 0
+  get_shrink: 0
+  scalesize: 0
 --- !u!95 &4560680307196247431
 Animator:
   serializedVersion: 4

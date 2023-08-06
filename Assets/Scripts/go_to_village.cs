@@ -9,6 +9,7 @@ public class go_to_village : MonoBehaviour
     public GameObject hero;
     public float delta=3f;
     private AudioSource myAudio;
+    public switch_scene back = null;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,8 @@ public class go_to_village : MonoBehaviour
                 myAudio.PlayOneShot(myAudio.clip);
             }
             if(Input.GetKey(KeyCode.E)){
-                SceneManager.LoadScene("origin_village");
+                // SceneManager.LoadScene("origin_village");
+                back.startvillage(); 
             }
         }
     }
