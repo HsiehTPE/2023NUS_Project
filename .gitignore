@@ -1,0 +1,24 @@
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+
+# Big exports / packages
+*.unitypackage
+*.zip
+*.app/
+
+# WebGL build output
+**/Build/
+**/*.data
+**/*.wasm
+**/*.framework.js
+
+# Windows build output
+**/*_Data/
+**/*.resS
+**/*.assets
