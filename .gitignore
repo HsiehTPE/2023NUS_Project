@@ -12,11 +12,11 @@ UserSettings/
 *.zip
 *.app/
 
-# WebGL build output
-**/Build/
-**/*.data
-**/*.wasm
-**/*.framework.js
+# # WebGL build output
+# **/Build/
+# **/*.data
+# **/*.wasm
+# **/*.framework.js
 
 # Windows build output
 **/*_Data/
