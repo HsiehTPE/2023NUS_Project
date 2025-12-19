@@ -32,7 +32,7 @@ All links should be opened using a modern desktop browser (Chrome / Edge / Firef
 https://hsiehtpe.github.io/2023NUS_Project/{Build_Folder}
 ```
 ### 🔹 Test Scene ｜WebGL测试
-https://hsiehtpe.github.io/2023NUS_Project/test
+https://hsiehtpe.github.io/2023NUS_Project/WebGLTest
 
 ### 🔹 Prototype ｜原型展示
 https://github.com/HsiehTPE/2023NUS_Project/blob/main/2_DigitalPrototype/prototype.mp4
