@@ -1,16 +1,16 @@
-# Unity generated
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-UserSettings/
+# # Unity generated
+# [Ll]ibrary/
+# [Tt]emp/
+# [Oo]bj/
+# [Bb]uild/
+# [Bb]uilds/
+# [Ll]ogs/
+# UserSettings/
 
-# Big exports / packages
-*.unitypackage
-*.zip
-*.app/
+# # Big exports / packages
+# *.unitypackage
+# *.zip
+# *.app/
 
 # # WebGL build output
 # **/Build/
