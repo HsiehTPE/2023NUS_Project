@@ -6,7 +6,7 @@
 
 ### **[AN Yanru](https://github.com/POPAYR)** ｜ **[CHEN Hongxi](https://github.com/XiGabe?tab=repositories)** | **[HSIEH Cheng-Tai](https://github.com/HsiehTPE)** ｜ **WANG Ziyang**
 
-### **[🏠 Course Homepage](https://html5gameenginegroup.github.io/GTCS-Engine-Student-Projects/2023.7.NUS/)** ｜ **[🎮 PLAY FINAL TEST](https://hsiehtpe.github.io/2023NUS_Project/6_FinalTest/FinalTest_WebGL)** ｜ **[🎬 TRAILER](https://b23.tv/G2fBbfd)**
+### **[🏠 Course Homepage](https://html5gameenginegroup.github.io/GTCS-Engine-Student-Projects/2023.7.NUS/)** ｜ **[🎮 PLAY FINAL GAME](https://hsiehtpe.github.io/2023NUS_Project/6_FinalTest/FinalTest_WebGL)** ｜ **[🎬 TRAILER](https://b23.tv/G2fBbfd)**
 
 
 ## 📌 Project Introduction ｜项目简介
