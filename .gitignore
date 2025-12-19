@@ -18,7 +18,7 @@
 # **/*.wasm
 # **/*.framework.js
 
-# Windows build output
-**/*_Data/
-**/*.resS
-**/*.assets
+# # Windows build output
+# **/*_Data/
+# **/*.resS
+# **/*.assets
