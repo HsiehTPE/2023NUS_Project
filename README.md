@@ -37,6 +37,8 @@ https://hsiehtpe.github.io/2023NUS_Project/WebGLTest
 ### 🔹 Prototype ｜原型展示
 https://github.com/HsiehTPE/2023NUS_Project/blob/main/2_DigitalPrototype/prototype.mp4
 
+https://github.com/user-attachments/assets/f8220b90-5e08-42d0-99e7-f4163b186389
+
 ### 🔹 Rough Demo ｜初步演示版本
 https://hsiehtpe.github.io/2023NUS_Project/3_RoughDemo/DemoWebGL
 
